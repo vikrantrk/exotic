@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Products from '../../data/dummy.json';
 import { Grid, Row, Col, Clearfix, Modal, Button} from 'react-bootstrap';
+import { setCartValue } from '../../services/localStorage.service';
 
 export default class Menu extends Component{
     constructor(props){
@@ -10,12 +11,19 @@ export default class Menu extends Component{
         this.getDetails = this.getDetails.bind(this);
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.setCart = this.setCart.bind(this);
 
         this.state = {
         show: false,
         product:[]
         };
   }
+
+  setCart(e, key, value) {
+    setCartValue(key,value);
+    e.stopPropagation();
+
+    }
 
     handleClose() {
     this.setState({ show: false });
@@ -35,7 +43,7 @@ export default class Menu extends Component{
     }
 
     getDetails(product){
-        //this.setState({ product: product});
+        this.setState({ product: product});
         this.setState({ show: true });
         console.log(product);
     }
@@ -45,7 +53,7 @@ export default class Menu extends Component{
             return(
                 
             
-              <Col sm={6} md={3} key={product.ProductId} className={this.checkIndex(index)} onClick={this.handleShow(product)}>
+              <Col sm={6} md={3} key={product.ProductId} className={this.checkIndex(index)} onClick={() => this.getDetails(product)}>
               <span className="thumbnail padding0">
       			<img src="http://exoticmunches.com/food-ordering-app/admin/backgroundImg/family-plan-bg_783.jpg" />
       			<h4>{product.Name}</h4>
@@ -57,7 +65,7 @@ export default class Menu extends Component{
       					<p className="price">${product.Price}</p>
       				</div>
       				<div className="col-md-6 col-sm-6">
-      				<button className="btn btn-info right cartBtn">Add to Cart</button>
+      				<button className="btn btn-info right cartBtn" onClick = {(e) => this.setCart(e, 'prodName', product)} >Add to Cart</button>
       				</div>
       				
       			</Row>
@@ -83,7 +91,7 @@ export default class Menu extends Component{
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>test </h4>
+            <h4>{this.state.product.Name} </h4>
             
           </Modal.Body>
           <Modal.Footer>

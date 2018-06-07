@@ -1,5 +1,5 @@
 .navbar-default {
-    background-color: white;
+    background-color: white !important;
     border-color: white;
     min-height: 55px;
 }
@@ -14,13 +14,23 @@
     color: #c94780 !important;
     background-color: transparent !important;
 }
-a.loginBtn {
+.navbar-collapse.collapse a {
+    line-height: 3.3;
+    font-size: 16px;
+    padding: 10px;
+    color: #777 !important;
+}
+.navbar-header a{
+    line-height: 2.8;
+}
+.navbar-collapse.collapse a.loginBtn {
     background-color: #c94780;
     color: white !important;
-    padding: 6px 20px !important;
+    padding: 0px 20px !important;
     font-size: 14px;
-    margin-top: 10px;
+    margin: 10px 4px;
     border-radius: 5px;
+    line-height: 2;
 }
 ul.navbar-right li {
     margin: 0 0 0 5px;
