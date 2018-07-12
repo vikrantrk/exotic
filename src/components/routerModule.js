@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 
 import Home from './home';
@@ -6,7 +6,7 @@ import About from './about';
 import Menu from './menu';
 import Cart from './cart';
 
-const RouterModule = () => {
+const RouterModule = (props) => {
     return (
         <Switch>
             <Route exact path='/' component={Home}/>

@@ -1,22 +1,22 @@
-import React, {Component} from 'react';
-import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
-import {Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
-
+import React from 'react';
 import Header from './header';
 
 import RouterModule from './routerModule';
+import createHistory from 'history/createBrowserHistory';
+
+const history = createHistory();
 
 const AppMain = () => {  
         return (
-            <Router>
+            <div>
                 <div className="AAA">
-                    <Header />
+                    <Header history = {history} />
 
                     <div className="text">
                     <RouterModule />
                     </div>
                 </div>
-            </Router>
+            </div>
         );
 }
 

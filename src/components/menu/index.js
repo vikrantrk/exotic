@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Products from '../../data/dummy.json';
 import { Grid, Row, Col, Clearfix, Modal, Button} from 'react-bootstrap';
-import { setCartValue } from '../../services/localStorage.service';
+import { setCartValue } from '../../effects/localStorage.service';
 
 export default class Menu extends Component{
     constructor(props){
@@ -34,7 +34,6 @@ export default class Menu extends Component{
     }
 
     componentDidMount(){
-        console.log(Products);
     }
 
     checkIndex(index){
@@ -45,7 +44,6 @@ export default class Menu extends Component{
     getDetails(product){
         this.setState({ product: product});
         this.setState({ show: true });
-        console.log(product);
     }
 
     getProducts(){

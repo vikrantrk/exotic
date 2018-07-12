@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Clearfix, Modal, Button} from 'react-bootstrap';
-import { getCartValue } from '../../services/localStorage.service';
+import { getCartValue } from '../../effects/localStorage.service';
 
 export default class Cart extends Component{
 
     render(){
         let products = JSON.parse(getCartValue('prodName'));
-        console.log(products);
         return products.map((product,index) => {
             return(
                 

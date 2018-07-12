@@ -1,8 +1,6 @@
 export const setCartValue = (key, value) => {
 
-    console.log(value);
     if(!getCartValue(key)){
-        console.log(getCartValue());
         let cartArray = [];
         cartArray.push(value);
         localStorage.setItem(key, JSON.stringify(cartArray));
@@ -18,3 +16,7 @@ export const setCartValue = (key, value) => {
 export const getCartValue = (key) => {
     return localStorage.getItem(key);
 };
+
+export const isLoggedIn = (key, flag) => {
+    localStorage.setItem(key, JSON.stringify(flag));
+}

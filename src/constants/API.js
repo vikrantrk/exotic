@@ -1,0 +1,1 @@
+export const LOGIN_API = 'http://18.191.38.25/study_demo2/public/index.php/api/login';

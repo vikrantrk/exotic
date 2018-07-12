@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
-import {Link, Switch, Route, BrowserRouter as Router} from 'react-router-dom';
+import React from 'react';
+import {Navbar} from 'react-bootstrap';
 
 export default class Logo extends React.PureComponent {
 
@@ -8,7 +7,7 @@ export default class Logo extends React.PureComponent {
         return(
             <Navbar.Header>
                 <Navbar.Brand>
-                <Link to={'/'}>React-Bootstrap</Link>
+                <div>React-Bootstrap</div>
                 </Navbar.Brand>
             </Navbar.Header>
         );
