@@ -1,12 +1,5 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-//import Visibility from '@material-ui/icons/Visibility';
-//import VisibilityOff from '@material-ui/icons/VisibilityOff';
-/* import { loginStatus } from '../../../services/api.service';
-import { isLoggedIn } from '../../../services/localStorage.service';
-import  { Redirect } from 'react-router-dom'; */
-
-
 import LoginForm from './loginForm';
 
 export default class Login extends React.PureComponent {
@@ -41,7 +34,7 @@ export default class Login extends React.PureComponent {
         >
           Log in
         </Button>
-        <LoginForm formProperties = {this.props.props} handleClose = {this.handleClose} />
+        <LoginForm formProperties = {this.props.props} handleClose = {this.handleClose}  />
       </span>
     );
   }

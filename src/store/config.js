@@ -13,9 +13,11 @@ const sagaMiddleware = createSagaMiddleware();
 export const configStore = () => {
   const store = createStore(
     RootReducer,
-    applyMiddleware(middleware, sagaMiddleware)
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(middleware, sagaMiddleware)   
   );
   //Run Saga
   sagaMiddleware.run(mySaga);
+  
   return store;
 };

@@ -1,27 +1,29 @@
 import React from 'react';
 import Signup from './signup';
 import Login from './login';
+import AfterLogin from "./afterlogin";
+//import { isLoggedIn } from './../../../services/localStorage.service';
 
 export default class UserAction extends React.PureComponent {
     constructor(props){
         super(props);
-
-        this.loginForm = this.loginForm.bind(this);
+        this.checkLogin = this.checkLogin.bind(this);
     }
 
-    setActive(menu){
-        this.setState({'active': menu});
-    }
-
-    loginForm(){
-        this.props.loginModalState(true);
+    checkLogin(){
+        if(!this.props.props.isLoggedIn){
+            return <Login props={this.props.props} />;
+        }
+        else{
+            return <AfterLogin props={this.props.props} />;
+        }
     }
 
     
     render(){
         return(
             <span>
-                <Login props={this.props.props}/>
+                { this.checkLogin() }
                 <Signup props={this.props.props}/>
             </span>
         );

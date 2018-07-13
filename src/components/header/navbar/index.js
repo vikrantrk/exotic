@@ -24,7 +24,6 @@ export default class NavbarComp extends React.PureComponent {
                     <Button onClick={() =>this.goTo('/about')}>About</Button>
                     <Button onClick={() =>this.goTo('/menu')}>Menu</Button>
                     <Button onClick={() =>this.goTo('/cart')}>Cart</Button>
-
                     <UserAction props={this.props.navProps.properties}/>
             </Navbar.Collapse>
         );

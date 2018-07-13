@@ -1,4 +1,4 @@
-export function headerReducer(state={isSignupModalVisible: false, isLoginModalVisible: false, isLoggedIn: false}, action){
+export function headerReducer(state={isSignupModalVisible: false, isLoginModalVisible: false, isLoggedIn: false, loggedInUser: false}, action){
     switch(action.type) {
         case 'SIGNUP_MODAL_VISIBILITY':
             return {
@@ -13,10 +13,11 @@ export function headerReducer(state={isSignupModalVisible: false, isLoginModalVi
             }
 
         case 'VALIDATE_USER_SUCCESS':
-        console.log('reducer', action.data);
+        console.log('reducer', action);
             return{
                 ...state,
-                isLoggedIn: true,
+                isLoggedIn: action.payload.loggedInStatus,
+                loggedInUser: action.payload.loggedInData
 
             }
 

@@ -4,6 +4,7 @@ import { ConnectedRouter } from "react-router-redux";
 import { configStore, history } from "./store/config";
 import MainApp from "./mainApp";
 
+
 const store = configStore();
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
     return (
       <Provider store={store}>
           <ConnectedRouter history={history}>
+          
             <MainApp />
           </ConnectedRouter>
         </Provider>

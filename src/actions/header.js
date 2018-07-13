@@ -19,3 +19,10 @@ export const validateUser = (payload) =>{
         payload: payload
     }
 }
+
+export const logoutUser = (payload) => {
+    return{
+        type: 'VALIDATE_USER_SUCCESS',
+        payload: payload
+    }
+}
