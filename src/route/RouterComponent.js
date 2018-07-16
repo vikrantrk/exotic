@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from 'react-router';
 import Home from '../components/home';
 import About from '../components/about';
-import Menu from '../components/menu';
 import Cart from '../components/cart';
+import MenuContainer from './../containers/menuContainer';
 
 
 const RouterComponent = (props) => {
@@ -12,7 +12,7 @@ const RouterComponent = (props) => {
             <div>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
-                <Route exact path='/menu' component={Menu} />
+                <Route exact path='/menu' component={MenuContainer} />
                 <Route exact path='/cart' component={Cart} />
             </div>
         </div>

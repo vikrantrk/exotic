@@ -1,0 +1,12 @@
+.productImg{
+    padding-top: 60%;
+}
+
+.parentContainer{
+    padding: 0 35px;
+}
+.counter{
+    vertical-align: text-bottom;
+    text-align: center;
+    padding: 0 5px;
+}
