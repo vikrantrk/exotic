@@ -1,0 +1,10 @@
+.parentContainer{
+    padding: 0 15%;
+}
+.prodImg {
+    width: 100% !important;
+    height: 100% !important;
+}
+tr.tblRow td {
+    width: 20%;
+}

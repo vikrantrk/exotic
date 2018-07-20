@@ -16,6 +16,10 @@ const theme = createMuiTheme({
       accent: {
         color: '#c94780'
       },
+      success: {
+        color: 'green',
+        backgroundColor: 'white', 
+      },
       accentSecondary: {
         color: '#867f7f'
       },

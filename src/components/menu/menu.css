@@ -5,8 +5,17 @@
 .parentContainer{
     padding: 0 35px;
 }
-.counter{
-    vertical-align: text-bottom;
+.counter {
     text-align: center;
-    padding: 0 5px;
+    vertical-align: middle;
+    padding: 7px;
+    font-size: 18px;
+}
+.counterBtn{
+    width:24px !important;
+    height: 24px !important;
+    min-height: 24px !important;
+}
+.counterBtn svg{
+    font-size: 20px !important;
 }

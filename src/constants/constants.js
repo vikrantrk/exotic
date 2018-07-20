@@ -1,3 +1,11 @@
-export const validateUser = 'VALIDATE_USER';
-export const validateUserSuccess = 'VALIDATE_USER_SUCCESS';
-export const loginModalVisibility = 'LOGIN_MODAL_VISIBILITY';
+export const VALIDATE_USER = 'VALIDATE_USER';
+export const VALIDATE_USER_SUCCESS = 'VALIDATE_USER_SUCCESS';
+export const LOGIN_MODAL_VISIBILITY = 'LOGIN_MODAL_VISIBILITY';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const SUCCESS_ADD_TO_CART = 'SUCCESS_ADD_TO_CART';
+export const ADD_COUNT = 'ADD_COUNT';
+export const REMOVE_COUNT = 'REMOVE_COUNT';
+export const ADD_ITEM_QTY = 'ADD_ITEM_QTY';
+export const REMOVE_ITEM_QTY = 'REMOVE_ITEM_QTY';
+export const GET_SELECTED = 'GET_SELECTED';

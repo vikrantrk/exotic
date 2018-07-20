@@ -1,7 +1,20 @@
-export const addToCart = (id) => {
-    console.log('id', 'hello');
+export const addToCart = (id,data) => {
     return{
         type: 'ADD_TO_CART',
-        payload: id
+        payload: {id,data}
+    }
+}
+
+export const addCount = (id, data) => {
+    return{
+        type: 'ADD_COUNT',
+        payload: {id,data}
+    }
+}
+
+export const removeCount = (id, data) => {
+    return{
+        type: 'REMOVE_COUNT',
+        payload: {id, data}
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 import theme from "../../theme";
 import Icon from "@material-ui/core/Icon";
 import IconButton from '@material-ui/core/IconButton';
@@ -16,30 +17,27 @@ export default class CounterComponent extends Component {
   }
 
   increment(){
-    let count = this.state.count
-    this.setState({'count': ++count});
+    this.props.addQty()
 }
 decrement(){
-    let count = this.state.count;
-    if(this.state.count > 1)
-        this.setState({'count': --count});
-    else
-        this.setState({'count': 0});
+    this.props.removeQty();
 }
 
   render() {
     return (
       <span className="pull-right" >
-        <Icon color="primary" onClick={this.decrement}>
-        remove_circle
-      </Icon>
+       
+      <Button variant="fab" color="primary" aria-label="Add"  onClick={this.decrement} className="counterBtn">
+        <RemoveIcon />
+      </Button>
         
       <span className="counter">
-      {this.state.count}
+      {this.props.count}
         </span>
-        <Icon color="primary" onClick={this.increment} >
-        add_circle
-      </Icon>
+       
+      <Button variant="fab" color="primary" aria-label="Add"  onClick={this.increment} className="counterBtn">
+        <AddIcon />
+      </Button>
         
       </span>
     );

@@ -1,4 +1,4 @@
-export const setCartValue = (key, value) => {
+/* export const setCartValue = (key, value) => {
 
     if(!getCartValue(key)){
         let cartArray = [];
@@ -19,4 +19,4 @@ export const getCartValue = (key) => {
 
 export const isLoggedIn = (key, flag) => {
     localStorage.setItem(key, JSON.stringify(flag));
-}
+} */
