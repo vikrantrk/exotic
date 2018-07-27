@@ -9,3 +9,6 @@ export const REMOVE_COUNT = 'REMOVE_COUNT';
 export const ADD_ITEM_QTY = 'ADD_ITEM_QTY';
 export const REMOVE_ITEM_QTY = 'REMOVE_ITEM_QTY';
 export const GET_SELECTED = 'GET_SELECTED';
+export const GET_CART_DATA = 'GET_CART_DATA';
+export const SUCCESS_CART_DATA = 'SUCCESS_CART_DATA';
+export const DELETE_ITEM = 'DELETE_ITEM';

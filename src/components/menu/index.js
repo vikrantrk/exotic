@@ -43,7 +43,7 @@ export default class Menu extends Component {
           index={index}
           addQty={this.addQty}
           removeQty={this.removeQty}
-          updatedState={this.props.updatedState}
+          updatedState={this.props.data.updatedState}
           addToCart={this.addToCart}
         />
       );

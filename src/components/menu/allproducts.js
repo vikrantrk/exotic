@@ -16,25 +16,19 @@ export default class AllProducts extends Component{
     constructor(props){
         super(props);
     }
-    addQty(id){
-        this.props.addQty(id);
-        
-      }
-
-      removeQty(id){
-        this.props.removeQty(id);
-        
-      }
+    
 
       addToCart = (id) => {
         this.props.addToCart(id);    
       }  
     
       shouldComponentUpdate(nextProps, nextState) {
-        if(nextProps.data.ProductId === nextProps.updatedState)
-            return true;
-        else
-            return false;
+        // console.log('Update:', nextProps.data.ProductId, nextProps.updatedState);
+        if(nextProps.data.ProductId === nextProps.updatedState) {
+          return true;
+        } else {
+          return false;
+        }
       }
     
 
@@ -68,16 +62,7 @@ export default class AllProducts extends Component{
               </CardContent>
               <CardActions>
                 <Grid container>
-                  <Grid item xs={12} sm={12}>
-                    <Typography
-                      variant="title"
-                      gutterBottom
-                      color="primary"
-                      style={{ fontSize: 16 }}
-                    >
-                      ${this.props.data.Price}
-                    </Typography>
-                  </Grid>
+                 
                   <Grid item xs={6} sm={6}>
                     
                     
@@ -90,10 +75,20 @@ export default class AllProducts extends Component{
                     </Button>}
                   </Grid>
                   <Grid item xs={6} sm={6}>
-                  {this.props.data.isAdded == true && this.props.data.count > 0 ?
+                  {/* this.props.data.isAdded == true && this.props.data.count > 0 ?
                     <CounterComponent count = {this.props.data.count ? this.props.data.count: 0} addQty = {() => this.addQty(this.props.data.ProductId)} removeQty = {() => this.removeQty(this.props.data.ProductId)} />
-                  : null
+                  : null */
                   }
+                  <Typography
+                      variant="title"
+                      gutterBottom
+                      color="primary"
+                      style={{ fontSize: 16 }}
+                      align = "right"
+                      className="price"
+                    >
+                      ${this.props.data.Price}
+                    </Typography>
                   </Grid>
                 </Grid>
               </CardActions>

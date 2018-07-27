@@ -14,7 +14,7 @@ import {
 } from "./../constants/constants";
 import { loginAPI } from "./../effects/apiCalls";
 import { userDetails } from "./../effects/dataUtility";
-import { addToCart } from "./../actions/menu";
+import {cartSaga} from './cartSaga';
 
 function* watchValidateUser() {
   yield takeEvery(VALIDATE_USER, validateUserLogin);
@@ -42,6 +42,7 @@ function* updatedCartValues() {
 }
 
 function* addCartValues(payload) {
+  console.log('saga', payload)
   let i = 0;
   const cartLen = payload.payload.data.length;
   let selectedData = [];
@@ -67,65 +68,7 @@ function* addCartValues(payload) {
   }
 }
 
-function* addCount() {
-  yield takeEvery(ADD_COUNT, addItemCount);
-}
 
-function* addItemCount(payload) {
-  let i = 0;
-  const cartLen = payload.payload.data.length;
-
-  for (i; i < cartLen; i++) {
-    if (payload.payload.id === payload.payload.data[i].ProductId) {
-      if (!payload.payload.data[i].count) 
-        {
-            payload.payload.data[i].count = 1;
-            console.log('if', payload.payload.data[i].count);
-            yield put({ type: ADD_ITEM_QTY, payload: payload.payload.data });
-            yield put({ type: GET_SELECTED, payload: payload.payload.id });
-            return
-        }
-      else 
-        {
-            console.log('else b4', payload.payload.data[i].count)
-            payload.payload.data[i].count = payload.payload.data[i].count + 1;
-            console.log('else after', payload.payload.data[i].count, payload.payload.data);
-            yield put({ type: ADD_ITEM_QTY, payload: payload.payload.data });
-            yield put({ type: GET_SELECTED, payload: payload.payload.id });
-            return
-        }
-
-    console.log('data',payload.payload.data )
-      //yield put({ type: ADD_ITEM_QTY, payload: payload.payload.data });
-      //yield put({ type: GET_SELECTED, payload: payload.payload.id });
-    }
-  }
-}
-
-function* removeCount() {
-    yield takeEvery(REMOVE_COUNT, removeItemCount);
-  }
-
-function* removeItemCount(payload) {
-    let i = 0;
-    const cartLen = payload.payload.data.length;
-  
-    for (i; i < cartLen; i++) {
-      if (payload.payload.id === payload.payload.data[i].ProductId) {
-        if (payload.payload.data[i].count && payload.payload.data[i].count > 0) {
-            
-            payload.payload.data[i].count--;
-            console.log('remove',payload.payload.data[i].count)
-            yield put({ type: REMOVE_ITEM_QTY, payload: payload.payload.data });
-            yield put({ type: GET_SELECTED, payload: payload.payload.id });
-        }
-        if (payload.payload.data[i].count < 1)
-            payload.payload.data[i].isAdded = false;
-        
-        //yield put({ type: GET_SELECTED, payload: payload.payload.id });
-      }
-    }
-  }
 
 
 
@@ -133,8 +76,7 @@ function* mySaga() {
   yield all([
     watchValidateUser(),
     updatedCartValues(),
-    addCount(),
-    removeCount()
+    cartSaga
   ]);
 }
 

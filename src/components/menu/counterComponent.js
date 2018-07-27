@@ -20,6 +20,7 @@ export default class CounterComponent extends Component {
     this.props.addQty()
 }
 decrement(){
+  if(this.props.count > 1)
     this.props.removeQty();
 }
 
