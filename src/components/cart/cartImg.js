@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import Avatar from '@material-ui/core/Avatar';
 

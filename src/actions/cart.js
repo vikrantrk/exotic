@@ -1,27 +1,34 @@
-export const getCartListData = (payload) => {
+import {
+    GET_CART_DATA,
+    ADD_QUANTITY,
+    REMOVE_QTY,
+    DELETE_ITEM
+  } from "./../constants/constants";
+  
+  export const getCartListData = (payload) => {
     return {
-        type: 'GET_CART_DATA',
+        type: GET_CART_DATA,
         payload
     }
 }
 
-export const addCount = (id, data) => {
+export const addQty = (id) => {
     return{
-        type: 'ADD_COUNT',
-        payload: {id,data}
+        type: ADD_QUANTITY,
+        payload: id
     }
 }
 
-export const removeCount = (id, data) => {
+export const removeQty = (id) => {
     return{
-        type: 'REMOVE_COUNT',
-        payload: {id, data}
+        type: REMOVE_QTY,
+        payload: id
     }
 }
 
-export const deleteItem = (payload) => {
+export const deleteItem = (index) => {
     return{
-        type: 'DELETE_ITEM',
-        payload
+        type: DELETE_ITEM,
+        payload: index
     }
 }

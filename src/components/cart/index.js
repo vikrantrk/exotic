@@ -2,7 +2,6 @@ import React, { Component } from "react";
 //import { getCartValue } from '../../effects/localStorage.service';
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,7 +9,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import "./cart.css";
 import CounterComponent from "./../menu/counterComponent";
-import { cartListItems } from "./../../effects/dataUtility";
 import CartImg from "./cartImg";
 import CartProdName from "./cartProdName";
 import CartProdPrice from "./cartProdPrice";
@@ -23,23 +21,20 @@ export default class Cart extends Component {
     super(props);
   }
   addQty(id) {
-    this.props.addQty(id, this.props.productList);
+    this.props.addQty(id);
   }
 
   removeQty(id) {
-    this.props.removeQty(id, this.props.productList);
+    this.props.removeQty(id);
   }
 
-  componentDidMount() {
-    this.props.getCartListData();
-  }
 
-  deleteItem(index,id, data) {
-    this.props.deleteItem(index,id, data);
-  }
+  deleteItem(index) {
+    this.props.deleteItem(index);
+  } 
 
   render() {
-    console.log("cart comp", this.props.productList);
+    const data = this.props.cartData/* .Product || this.props.cartData */;
     return (
       <div className="parentContainer">
         <Grid container className="grid" spacing={16}>
@@ -57,37 +52,41 @@ export default class Cart extends Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {this.props.cartListItems.map((cartItem, index) => {
+                  {data.map((cartItem, index) => {
+                      
                     return (
                       <TableRow className="tblRow" key={index}>
                         <CartImg />
-                        <CartProdName name={cartItem.Name} />
+                        <CartProdName name={cartItem.Product.Name} />
                         <TableCell>
-                          <CounterComponent
-                            count={cartItem.count}
-                            addQty={() => this.addQty(cartItem.ProductId)}
-                            removeQty={() => this.removeQty(cartItem.ProductId)}
-                          />
+                          {<CounterComponent
+                            count={cartItem.Product.quantity}
+                            addQty={() => this.addQty(cartItem.Product.ProductId)}
+                            removeQty={() => this.removeQty(cartItem.Product.ProductId)}
+                          /> }
                         </TableCell>
 
-                        <CartProdPrice price={cartItem.Price} />
+                        <CartProdPrice price={cartItem.Product.Price} />
                         <CartProdTotal
-                          total={cartItem.Price * cartItem.count}
+                          total={cartItem.Product.quantity * cartItem.Product.Price}
                         />
                         <TableCell>
                           <Button
                             variant="fab"
                             color="primary"
                             aria-label="Add"
-                            onClick={this.decrement}
+                            /* onClick={this.decrement} */
                             className="counterBtn"
                           >
-                            <DeleteIcon onClick = {() => this.deleteItem(index,cartItem.ProductId, this.props.cartListItems)} />
+                            <DeleteIcon onClick = {() => this.deleteItem(index)}  />
                           </Button>
                         </TableCell>
                       </TableRow>
                     );
-                  })}
+                  
+               
+                  
+              })}
                 </TableBody>
               </Table>
             </Paper>

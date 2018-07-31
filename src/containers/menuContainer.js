@@ -10,13 +10,14 @@ class MenuContainer extends Component {
     
   }
 
-  addToCart(id, data) {
-    this.props.addToCart(id, data);
+  addToCart(id) {
+    this.props.addToCart(id);
   }
 
  
 
   render() {
+
     return (
       <Menu
         data={this.props}
@@ -27,16 +28,15 @@ class MenuContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('State Data:', state);
   return {
-    allProducts: state.cart.productList,
-    updatedState: state.cart.updatedState
+    allProducts: state.cart.allProducts,
+    cartList: state.cart.cartList
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addToCart: (id, data) => dispatch(addToCart(id, data))
+    addToCart: (id) => dispatch(addToCart(id))
   };
 };
 

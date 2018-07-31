@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -6,10 +6,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 
-import { Field, FieldArray, reduxForm } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 
 import "./login.css";
-import { validateUser } from './../../../../actions/header';
 
 const getFormValues = (props, e) =>{
     let userLoginDetails = {
@@ -25,7 +24,6 @@ const getFormValues = (props, e) =>{
 const renderTextField = ({
     input,
     label,
-    meta: { touched, error },
     ...custom,
     type,
     fullWidth
@@ -42,7 +40,6 @@ const renderTextField = ({
   );
 
 const LoginForm = (props) =>{
-    const { handleSubmit, pristine, reset, submitting } = props;
 return(
     
     <Dialog

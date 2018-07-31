@@ -1,38 +1,27 @@
 import Products from '../data/dummy.json';
+import {
+  UPDATE_QUANTITY_SUCCESS,
+  ADD_TO_CART_SUCCESS
+} from "./../constants/constants";
 
-export function cartReducer(state = { productList: Products.ProductCollection, cartDataItems: [], updatedState: '' }, action) {
+export function cartReducer(state = { allProducts: Products.ProductCollection, cartList: [] }, action) {
   switch (action.type) {
-    case "SUCCESS_CART_DATA":
-      console.log("red cartItems", action.payload);
-      return {
-        ...state,
-        cartDataItems: [...action.payload]
-      };
+    case ADD_TO_CART_SUCCESS:
 
-    case "ADD_ITEM_QTY":
-      return {
+    return{
         ...state,
-        productList: [...action.payload]
-      };
+        allProducts: state.allProducts,
+        cartList: [...state.cartList, action.payload]
+    }
 
-    case "REMOVE_ITEM_QTY":
-      return {
+    case UPDATE_QUANTITY_SUCCESS:
+      return{
         ...state,
-        productList: [...action.payload]
-      };
+        cartList: [
+          ...action.payload
+          ]
 
-    case "GET_SELECTED":
-      return {
-        ...state,
-        updatedState: action.payload
-      };
-
-      case 'UPDATE_PRODUCT':
-      console.log('reducer', action.payload)
-            return{
-                ...state,
-                productList: [...action.payload]
-            }
+      }
 
     default:
       return state;

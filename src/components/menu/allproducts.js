@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { /* Grid */ Row, Col, Clearfix, Modal } from "react-bootstrap";
-import { setCartValue } from "../../effects/localStorage.service";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,27 +7,29 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./menu.css";
 import theme from "../../theme";
-import CounterComponent from "./counterComponent";
 import Grid from "@material-ui/core/Grid";
 
+let addedProdId = '';
 export default class AllProducts extends Component{
     constructor(props){
         super(props);
+        this.state = {addedProdId: ''}
     }
     
 
       addToCart = (id) => {
+        
+        addedProdId = id;
         this.props.addToCart(id);    
       }  
     
       shouldComponentUpdate(nextProps, nextState) {
-        // console.log('Update:', nextProps.data.ProductId, nextProps.updatedState);
-        if(nextProps.data.ProductId === nextProps.updatedState) {
+        if(nextProps.data.ProductId === addedProdId) {
           return true;
         } else {
           return false;
         }
-      }
+      } 
     
 
     render(){
@@ -66,12 +66,16 @@ export default class AllProducts extends Component{
                   <Grid item xs={6} sm={6}>
                     
                     
-                    {this.props.data.isAdded == true ? 
-                      <Button size="small" style={theme.palette.buttonPrimary} style={theme.palette.success}>
-                      ADDED TO CART
-                    </Button>
-                      : <Button size="small" style={theme.palette.buttonPrimary} onClick ={() => this.addToCart(this.props.data.ProductId)} >
+                    {//this.props.cartData.indexOf(this.props.data.ProductId) === -1 
+                    //console.log('test', this.props.cartData.map(x => {return x.productIdd; }).indexOf(this.props.data.ProductId))
+
+                    this.props.cartData.map((x) => { return x.Product.ProductId; }).indexOf(this.props.data.ProductId) === -1
+                     ? 
+                      <Button size="small" style={theme.palette.buttonPrimary} onClick ={() => this.addToCart(this.props.data.ProductId)} >
                       ADD TO CART
+                    </Button>
+                      : <Button size="small" style={theme.palette.buttonPrimary} style={theme.palette.success}>
+                      ADDED TO CART
                     </Button>}
                   </Grid>
                   <Grid item xs={6} sm={6}>

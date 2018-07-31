@@ -5,7 +5,7 @@ export function userDetails(user) {
       });
 }
 
-export function cartListItems(props) {
+/* export function cartListItems(props) {
   return new Promise((resolve, reject) => {  
 		let cartItemsCount =props.cartList.length;
 		
@@ -24,4 +24,4 @@ export function cartListItems(props) {
     } 
     resolve(cartItems);
      });
-}
+} */

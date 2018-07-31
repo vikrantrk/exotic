@@ -1,12 +1,12 @@
+import Products from '../data/dummy.json';
+import {
+    ADD_TO_CART_SUCCESS
+  } from "./../constants/constants";
 
-
-export function menuReducer(state={cartList: []}, action){
+export function menuReducer(state={}, action){
     switch(action.type) {
-        case 'SUCCESS_ADD_TO_CART':
-            return{
-                ...state,
-                cartList: [...state.cartList, action.payload]
-            }
+
+           
 
         
 

@@ -1,43 +1,40 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Cart from "../components/cart";
-import { getCartListData, addCount, removeCount, deleteItem } from "./../actions/cart";
+import { getCartListData, addQty,removeQty, deleteItem } from "./../actions/cart";
 
 class CartContainer extends Component {
   constructor(props) {
     super(props);
     this.getCartListData = this.getCartListData.bind(this);
-    this.addCount = this.addCount.bind(this);
-    this.removeCount = this.removeCount.bind(this);
+    this.addQty = this.addQty.bind(this);
+    this.removeQty = this.removeQty.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
   }
 
-  addCount(id, data) {
-    this.props.addCount(id, data);
+  addQty(id) {
+    this.props.addQty(id);
   }
 
-  removeCount(id, data) {
-    this.props.removeCount(id, data);
+  removeQty(id) {
+    this.props.removeQty(id);
   }
 
   getCartListData() {
     this.props.getCartListData(this.props.cartList, this.props.productList);    
   }
 
-  deleteItem(index,id, data) {
-    this.props.deleteItem(index,id, data);
+  deleteItem(index) {
+    this.props.deleteItem(index);
   }
 
   render() {
-    console.log('cc', this.props)
     return (
       <Cart
-        cartList={this.props.cartList}
-        productList={this.props.productList}
-        getCartListData={this.getCartListData}
-        cartListItems={this.props.cartDataItems}
-        addQty={this.addCount}
-        removeQty={this.removeCount}
+        cartData={this.props.cartList}
+        productList={this.props.allProducts}
+        addQty={this.addQty}
+        removeQty={this.removeQty}
         updatedState={this.props.updatedState}
         data = {this.props}
         deleteItem = {this.deleteItem}
@@ -48,9 +45,8 @@ class CartContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    cartList: state.menu.cartList,
-    productList: state.cart.productList,
-    cartDataItems: state.cart.cartDataItems
+    cartList: state.cart.cartList,
+    allProducts: state.cart.allProducts
   };
 };
 
@@ -60,9 +56,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(
         getCartListData({ cartList: cartData, productList: allProducts })
       ),
-    addCount: (id, data) => dispatch(addCount(id, data)),
-    removeCount: (id, data) => dispatch(removeCount(id, data)),
-    deleteItem: (index,id, data) => dispatch(deleteItem({index,id, data}))
+      addQty: (id) => dispatch(addQty(id)),
+      removeQty: (id) => dispatch(removeQty(id)),
+      deleteItem: (index) => dispatch(deleteItem({index}))
   };
 };
 
