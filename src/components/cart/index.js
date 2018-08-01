@@ -13,6 +13,8 @@ import CartImg from "./cartImg";
 import CartProdName from "./cartProdName";
 import CartProdPrice from "./cartProdPrice";
 import CartProdTotal from "./cartProdTotal";
+import CartGrandTotal from "./cartGrandTotal";
+import CartTblHeader from "./cartTblHeader";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Button from "@material-ui/core/Button";
 
@@ -42,14 +44,7 @@ export default class Cart extends Component {
             <Paper>
               <Table>
                 <TableHead>
-                  <TableRow>
-                    <TableCell>Product</TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Quantity</TableCell>
-                    <TableCell>Price</TableCell>
-                    <TableCell>Total</TableCell>
-                    <TableCell className="deleteRow" />
-                  </TableRow>
+                  <CartTblHeader />
                 </TableHead>
                 <TableBody>
                   {data.map((cartItem, index) => {
@@ -83,13 +78,14 @@ export default class Cart extends Component {
                         </TableCell>
                       </TableRow>
                     );
-                  
-               
+                    
                   
               })}
+              <CartGrandTotal data = {data} />
                 </TableBody>
               </Table>
             </Paper>
+            
           </Grid>
         </Grid>
       </div>
